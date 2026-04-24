@@ -1,10 +1,10 @@
 //Marcos Lillo
-public class Pasaporte {
+public class Pasaporte implements idPersona {
     //atributos
     private String numero;
     private String nacionalidad;
     //constructor
-    private Pasaporte(String numero, String nacionalidad) {
+    public Pasaporte(String numero, String nacionalidad) {
         this.numero = numero;
         this.nacionalidad = nacionalidad;
     }
@@ -19,7 +19,7 @@ public class Pasaporte {
 
     @Override
     public String toString() {
-        return this.numero+ " " +this.nacionalidad;
+        return this.numero + " " + this.nacionalidad;
     }
     @Override
     public boolean equals(Object obj) {
