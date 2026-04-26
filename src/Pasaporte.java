@@ -34,5 +34,4 @@ public class Pasaporte implements idPersona {
         }
         return new Pasaporte(num, nacionalidad);
     }
-    }
 }
