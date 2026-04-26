@@ -28,5 +28,11 @@ public class Pasaporte implements idPersona {
         return this.numero.equals(o.numero) && this.nacionalidad.equals(o.nacionalidad);
 
     }
-    //no ocupar of todavia
+    public static Pasaporte of(String num, String nacionalidad){
+        if (num == null || nacionalidad == null) {
+            return null;
+        }
+        return new Pasaporte(num, nacionalidad);
+    }
+    }
 }
