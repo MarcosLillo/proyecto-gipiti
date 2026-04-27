@@ -1,4 +1,4 @@
-public interface idPersona {
+public interface IdPersona {
     //maxi
     public String toString();
 
