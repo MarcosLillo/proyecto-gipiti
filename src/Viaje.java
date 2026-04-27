@@ -30,6 +30,10 @@ public class Viaje {
             asientos[i][0] = "V"; //V de Vacio
         }
 
+        /*Crea un nuevo Viaje con los datos que recibe como parámetro,
+        los cuales supone correctos, asegurándose que el objeto Bus
+        correspondiente agregue a su colección este viaje*/
+
     }
 
     public LocalDate getFecha() {
@@ -66,6 +70,10 @@ public class Viaje {
 
         return asientos;
 
+        /*Retorna un arreglo bidimensional donde, por cada asiento
+        existente en el bus para este viaje, indica su número (valor
+        mayor o igual a 1) y si este se encuentra libre u ocupado*/
+
     }
 
     public void addPasaje(Pasaje pasaje) {
@@ -97,17 +105,29 @@ public class Viaje {
 
         return listaPasajeros;
 
+        /*Retorna un arreglo bidimensional con los datos de los pasajeros
+        que tienen un pasaje asignado. Por cada pasajero (fila) indica:
+        id, nombre, nombre del contacto y número de teléfono del
+        contacto, cada uno de estos datos en una columna separada*/
+
+
     }
 
     public boolean existeDisponibilidad() {
 
         return nroAsientosDisponibles > 0;
 
+        /*Retorna true si para este viaje existe, al menos, un asiento
+        disponible*/
+
     }
 
     public int getNroAsientosDisponibles() {
 
         return nroAsientosDisponibles;
+
+        /*Retorna el número de asientos que aún tiene disponibles (no se
+        han vendido)*/
 
     }
 
