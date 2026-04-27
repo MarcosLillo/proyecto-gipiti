@@ -18,7 +18,7 @@ public class Pasaje {
         return (long) (Math.random() * 10000000000000L);
     }
     //Consultar sobre si es int o long
-    public int getNumero() {
+    public long getNumero() {
         return numero;
     }
 
