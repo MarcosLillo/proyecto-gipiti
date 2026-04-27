@@ -6,36 +6,33 @@ public class Viaje {
     private LocalDate fecha;
     private LocalTime hora;
     private int precio;
+
     //Se aparentemente infiere por el UML
     private Bus bus;
-    private String[][] asientos;
-    private Pasaje pasaje;
+    private String[][] asientos; //Vacio o Ocupado
     private String[][] listaPasajeros;
     private int nroAsientosDisponibles;
 
-    //Clase Bus
+    //Crea cada vez, un viaje nuevo, guarda fecha, precio y el bus
     public Viaje(LocalDate fecha, LocalTime hora, int precio, Bus bus) {
 
         this.fecha = fecha;
         this.hora = hora;
         this.precio = precio;
 
-        //Inferidos
         this.bus = bus;
-        this.asientos = new String[bus.getNroAsientos()][1]; //Se medio acomoda automaticamente el diablo
-        this.listaPasajeros = new String[bus.getNroAsientos()][1];
-        this.nroAsientosDisponibles = bus.getNroAsientos();
+        int capacidad = bus.getNroAsientos(); //Para resumir
+        this.asientos = new String[capacidad][1];
+        this.listaPasajeros = new String[capacidad][4];
+        this.nroAsientosDisponibles = capacidad;
 
-        for (int i = 0; i < asientos.length; i++) {
-            asientos[i][0] = "V"; //V de Vacio
+        for (int i = 0; i < capacidad; i++) {
+            asientos[i][0] = "V";
         }
-
-        /*Crea un nuevo Viaje con los datos que recibe como parámetro,
-        los cuales supone correctos, asegurándose que el objeto Bus
-        correspondiente agregue a su colección este viaje*/
 
     }
 
+    //Fecha local, el cuando es el viaje
     public LocalDate getFecha() {
 
         return fecha;
@@ -78,26 +75,26 @@ public class Viaje {
 
     public void addPasaje(Pasaje pasaje) {
 
-        int asiento = pasaje.getAsiento();
-        asiento = asiento - 1;
+        int index = pasaje.getAsiento() - 1;
 
-        //Rango
-        if (asiento < 0 || asiento >= asientos.length) {
-            System.out.println("Asiento no valido");
+        if (index < 0 || index >= asientos.length) {
+            System.out.println("Asiento no válido");
             return;
         }
 
-        //(asientos[asiento][0].equals("O"), tambien sirve
-        //Si el asiento es distinto a Vacio osea 0cupado, creo
-        if (!asientos[asiento][0].equals("V")) {
-            System.out.println("Asiento Ocupado");
+        if (!asientos[index][0].equals("V")) {
+            System.out.println("Asiento ocupado");
             return;
         }
 
-            //V de vacio, O de ocupado
-            asientos[asiento][0] = "O";
-            listaPasajeros[asiento][0] = pasaje.getPasajero().getNombreCompleto();
-            nroAsientosDisponibles--;
+        asientos[index][0] = "O"; //Ocupado
+
+        listaPasajeros[index][0] = pasaje.getPasajero().getIdPersona().toString();
+        listaPasajeros[index][1] = pasaje.getPasajero().getNombreCompleto();
+        listaPasajeros[index][2] = pasaje.getPasajero().getNomContacto();
+        listaPasajeros[index][3] = pasaje.getPasajero().getFonoContacto();
+
+        nroAsientosDisponibles--;
 
     }
 
