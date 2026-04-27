@@ -1,16 +1,18 @@
 public class Persona {
 
-        private int idPersona;
+        private IdPersona idPersona; //UML dice IdPersona = idPersona
         private String nombreCompleto;
         private String telefono;
 
-        public Persona(int idPersona, String nombreCompleto, String telefono){
+        //Cambie el int por IdPersona
+        public Persona(IdPersona idPersona, String nombreCompleto, String telefono){
             this.idPersona = idPersona;
             this.nombreCompleto = nombreCompleto;
             this.telefono = telefono;
         }
 
-        public int getIdPersona(){
+        //Cambie el int por IdPersona
+        public IdPersona getIdPersona(){
             return idPersona;
         }
         public String getNombreCompleto() {
@@ -34,13 +36,13 @@ public class Persona {
         @Override
         public boolean equals(Object obj){
             if (this == obj) return true;
-            if (this == null) return false;
+            if (obj == null) return false; //Cambie el this por obj
             if (getClass() != obj.getClass()) return false;
 
             Persona persona = (Persona) obj;
-            return this.idPersona == persona.idPersona;
+            return this.idPersona.equals(persona.idPersona); //Modifique return this.idPersona == persona.idPersona; ya que era un objeto, no int
         }
 
-    }
+}
 
 

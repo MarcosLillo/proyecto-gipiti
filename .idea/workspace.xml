@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20cf9bd7-be5f-4165-8da3-90e667139e18" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Bus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IdPersona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/IdPersona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pasaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pasaje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pasajero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pasajero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persona.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Rut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SistemaVentaPasajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaVentaPasajes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Viaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Viaje.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +46,7 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "Merging JoaquinCastro",
+    "git-widget-placeholder": "JoaquinCastro",
     "kotlin-language-version-configured": "true",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
@@ -67,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1777176329726</updated>
       <workItem from="1777176337282" duration="44000" />
-      <workItem from="1777247376920" duration="8928000" />
+      <workItem from="1777247376920" duration="16794000" />
     </task>
     <servers />
   </component>

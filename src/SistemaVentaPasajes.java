@@ -6,7 +6,7 @@ public class SistemaVentaPasajes {
     /*Por lo visto el Metodo createCliente utiliza como Parametro el Atributo de la Clase Persona idPersona.
     Y tambien utiliza como Parametro la Clase Nombre para
      */
-    public boolean createCliente(idPersona id, Nombre nom, String fono, String email) {
+    public boolean createCliente(IdPersona id, Nombre nom, String fono, String email) {
 
     }
 
@@ -24,7 +24,7 @@ public class SistemaVentaPasajes {
     }
 
     //El Metodo iniciaVenta usa el Parametro TipoDocumento, el cual es un Enum, y idPersona, Atributo de la Clase Persona
-    public boolean iniciaVenta(String idDoc, TipoDocumento tipo, LocalDate fechaVenta, idPersona idCliente) {
+    public boolean iniciaVenta(String idDoc, TipoDocumento tipo, LocalDate fechaVenta, IdPersona idCliente) {
 
     }
 

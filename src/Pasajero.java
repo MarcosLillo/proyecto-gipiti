@@ -2,7 +2,8 @@ public class Pasajero extends Persona {
     private String nomContacto;
     private String fonoContacto;
 
-    public Pasajero(int idPersona, String nombreCompleto, String telefono, String nomContacto, String fonoContacto){
+    //Modificaion del IdPersona por la Clase Persona
+    public Pasajero(IdPersona idPersona, String nombreCompleto, String telefono, String nomContacto, String fonoContacto){
         super(idPersona, nombreCompleto, telefono);
         this.nomContacto = nomContacto;
         this.fonoContacto = fonoContacto;
