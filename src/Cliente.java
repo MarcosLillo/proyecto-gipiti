@@ -1,10 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
 
     private String email;
+    private List<Venta> ventas;
 
     public Cliente(IdPersona id, Nombre nom, String email) {
 
         this.email = email;
+        this.ventas = new ArrayList<>();
 
     }
 
@@ -22,13 +27,13 @@ public class Cliente {
 
     public void addVenta(Venta venta) {
 
-        this.venta = venta;
+        this.ventas.add(venta);
 
     }
 
     public Venta[] getVentas() {
 
-        return ventas;
+        return ventas.toArray(new Venta[0]);
 
     }
 

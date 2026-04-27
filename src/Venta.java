@@ -1,6 +1,5 @@
 //Marcos Lillo
 import java.time.LocalDate;
-//Modificados ArrayList y List
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +7,6 @@ public class Venta   {
     private  String idDocumento;
     private TipoDocumento tipo;
     private LocalDate fecha;
-    //https://www.youtube.com/watch?v=oUMsNjCDT8I
     private Cliente cli;
     private List<Pasaje> pasajes;
 
@@ -52,5 +50,5 @@ public class Venta   {
         return total;
     }
 
-
+//https://www.youtube.com/watch?v=oUMsNjCDT8I
 }

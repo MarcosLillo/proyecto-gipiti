@@ -1,7 +1,7 @@
 import java.time.LocalDate; //Linea 22
 import java.time.LocalTime; //Linea 22
 
-public class SistemaVentasPasajes {
+public class SistemaVentaPasajes {
 
     /*Por lo visto el Metodo createCliente utiliza como Parametro el Atributo de la Clase Persona idPersona.
     Y tambien utiliza como Parametro la Clase Nombre para

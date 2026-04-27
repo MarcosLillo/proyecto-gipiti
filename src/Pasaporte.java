@@ -1,5 +1,5 @@
 //Marcos Lillo
-public class Pasaporte implements idPersona {
+public class Pasaporte implements IdPersona {
     //atributos
     private String numero;
     private String nacionalidad;
