@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class Main { //Testeo
+public class Main {
     private Scanner sc = new Scanner(System.in);
     private SistemaVentaPasajes sistema = new SistemaVentaPasajes();
     public static void main(String[] args) {
