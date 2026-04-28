@@ -1,3 +1,5 @@
+//Joaquin Castro, Marcos Lillo, Maximiliano Sandoval y Jose Millan
+
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.LocalTime;
