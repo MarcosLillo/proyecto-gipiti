@@ -1,11 +1,11 @@
 public class Persona {
 
         private IdPersona idPersona; //UML dice IdPersona = idPersona
-        private String nombreCompleto;
+        private Nombre nombreCompleto;
         private String telefono;
 
-        //Cambie el int por IdPersona
-        public Persona(IdPersona idPersona, String nombreCompleto, String telefono){
+        //Cambie el int por IdPersona y tambien el String por Nombre, sip antes estaba String nombreCompleto, eso me hizo perder 40 minutos de mi vida
+        public Persona(IdPersona idPersona, Nombre nombreCompleto, String telefono){
             this.idPersona = idPersona;
             this.nombreCompleto = nombreCompleto;
             this.telefono = telefono;
@@ -15,13 +15,13 @@ public class Persona {
         public IdPersona getIdPersona(){
             return idPersona;
         }
-        public String getNombreCompleto() {
+        public Nombre getNombreCompleto() {
             return nombreCompleto;
         }
         public String getTelefono(){
             return telefono;
         }
-        public void setNombreCompleto(String nombreCompleto){
+        public void setNombreCompleto(Nombre nombreCompleto){
             this.nombreCompleto = nombreCompleto;
         }
         public void setTelefono(String telefono){

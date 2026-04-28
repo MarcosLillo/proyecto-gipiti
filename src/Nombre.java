@@ -55,7 +55,14 @@ public class Nombre {
     }
 
     public boolean equals(Object Otro) {
+
+        //Modifique mi propio codigo por que no inclui esto
+        if (this == Otro) return true;
+        if (Otro == null || getClass() != Otro.getClass()) return false;
+        //Osea la cosa basica
+
         Nombre persona = (Nombre) Otro;
+
         return this.nombres.equalsIgnoreCase(persona.nombres) && this.apellidoPaterno.equalsIgnoreCase(persona.apellidoPaterno) && this.apellidoMaterno.equalsIgnoreCase(persona.apellidoMaterno);
     }
 
