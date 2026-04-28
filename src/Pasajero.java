@@ -3,7 +3,7 @@ public class Pasajero extends Persona {
     private String fonoContacto;
 
     //Modificaion del IdPersona por la Clase Persona
-    public Pasajero(IdPersona idPersona, String nombreCompleto, String telefono, String nomContacto, String fonoContacto){
+    public Pasajero(IdPersona idPersona, Nombre nombreCompleto, String telefono, String nomContacto, String fonoContacto){
         super(idPersona, nombreCompleto, telefono);
         this.nomContacto = nomContacto;
         this.fonoContacto = fonoContacto;

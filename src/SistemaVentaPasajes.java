@@ -1,166 +1,310 @@
-import java.time.LocalDate; //Linea 22
-import java.time.LocalTime; //Linea 22
+import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class SistemaVentaPasajes {
 
-    /*Por lo visto el Metodo createCliente utiliza como Parametro el Atributo de la Clase Persona idPersona.
-    Y tambien utiliza como Parametro la Clase Nombre para*/
+    private ArrayList<Cliente> clientes;
+    private ArrayList<Pasajero> pasajeros;
+    private ArrayList<Bus> buses;
+    private ArrayList<Viaje> viajes;
+    private ArrayList<Venta> ventas;
+
+    public SistemaVentaPasajes() {
+        clientes = new ArrayList<>();
+        pasajeros = new ArrayList<>();
+        buses = new ArrayList<>();
+        viajes = new ArrayList<>();
+        ventas = new ArrayList<>();
+    }
+
     public boolean createCliente(IdPersona id, Nombre nom, String fono, String email) {
 
-        /*Crea un objeto Cliente con los datos que se reciben como
-        parámetro y se almacena en la colección correspondiente,
-        siempre que no exista otro cliente con el mismo idPersona.
-        Retorna true si la acción se puede realizar, false en caso
-        contrario*/
+        if(findCliente(id)!=null)
+            return false;
 
-
+        Cliente c = new Cliente(id,nom,email,fono);
+        clientes.add(c);
+        return true;
     }
 
-    //Aqui el Metodo createPasajero, usa como Parametro la Interface IdPersona y la Clase Nombre 2 veces
-    public boolean createPasajero(IdPersona id, Nombre nom, String fono, Nombre nomContacto, String fonoContacto) {
+    public boolean createPasajero(IdPersona id, Nombre nom,
+                                  String fono,
+                                  Nombre nomContacto,
+                                  String fonoContacto) {
 
-       /*Crea un objeto Pasajero con los datos que se reciben como
-        parámetro y se almacena en la colección correspondiente,
-        siempre que no exista otro pasajero con el mismo idPersona.
-        Retorna true si la acción se puede realizar, false en caso
-        contrario*/
+        if(findPasajero(id)!=null)
+            return false;
 
+        Pasajero p = new Pasajero(
+                id,
+                nom,
+                fono,
+                nomContacto.toString(),
+                fonoContacto
+        );
+
+        pasajeros.add(p);
+        return true;
     }
 
-    public boolean createBus(String patente, String marca, String modelo, int nroAsientos) {
+    public boolean createBus(String patente,
+                             String marca,
+                             String modelo,
+                             int nroAsientos){
 
-        /*Crea un objeto Bus con los datos que se reciben como
-        parámetro y se almacena en la colección correspondiente,
-        siempre que no exista otro bus con la misma patente. Retorna
-        true si la acción se puede realizar, false en caso contrario*/
+        if(findBus(patente)!=null)
+            return false;
 
+        Bus b = new Bus(patente,nroAsientos);
+        b.setMarca(marca);
+        b.setModelo(modelo);
+
+        buses.add(b);
+        return true;
     }
 
-    public boolean createViaje(LocalDate fecha, LocalTime hora, int precio, String patBus) {
+    public boolean createViaje(LocalDate fecha,
+                               LocalTime hora,
+                               int precio,
+                               String patBus){
 
-        /*Crea un objeto Viaje a partir de los datos que se reciben como
-        parámetro y se almacena en la colección correspondiente,
-        siempre que no exista otro viaje con la misma fecha y hora de
-        salida para el bus que se indica. Retorna true si la acción se
-        puede realizar, false en caso contrario*/
+        Bus b = findBus(patBus);
 
+        if(b==null)
+            return false;
+
+        if(findViaje(fecha,hora,patBus)!=null)
+            return false;
+
+        Viaje v = new Viaje(fecha,hora,precio,b);
+        b.addViaje(v);
+        viajes.add(v);
+        return true;
     }
 
-    //El Metodo iniciaVenta usa el Parametro TipoDocumento, el cual es un Enum, y idPersona, Atributo de la Clase Persona
-    public boolean iniciaVenta(String idDoc, TipoDocumento tipo, LocalDate fechaVenta, IdPersona idCliente) {
+    public boolean iniciaVenta(String idDoc,
+                               TipoDocumento tipo,
+                               LocalDate fechaVenta,
+                               IdPersona idCliente){
 
-        /*Crea una nueva venta con los datos que se reciben como
-        parámetro. Nótese que el cliente cuyo id se recibe como
-        parámetro ya debiera existir en el sistema. El método retorna
-        true si se puede realizar la acción y false si no es posible llevarlo
-        a cabo porque ya existe una venta con el idDocumento dado o
-        si no existe un cliente con el id dado*/
+        if(findVenta(idDoc,tipo)!=null)
+            return false;
 
+        Cliente cli = findCliente(idCliente);
 
+        if(cli==null)
+            return false;
+
+        Venta v = new Venta(
+                idDoc,
+                tipo,
+                fechaVenta,
+                cli
+        );
+
+        ventas.add(v);
+
+        return true;
     }
 
-    public String[][] getHorariosDisponibles(LocalDate fechaViaje) {
+    public boolean vendePasaje(String idDoc,
+                               LocalDate fecha,
+                               LocalTime hora,
+                               String patBus,
+                               int asiento,
+                               IdPersona idPasajero){
 
-        /*Retorna un arreglo bidimensional con datos relevantes de los
-        viajes que se realizarán/realizaron en la fecha que se pasa como
-        parámetro. Los datos que se incluyen por cada viaje son patente
-        del bus que lo realiza, hora, precio de un pasaje y el número de
-        asientos disponibles de. Si no existen viajes en la fecha que se
-        indica, el método retorna un arreglo de tamaño cero*/
+        Venta venta = findVenta(idDoc,TipoDocumento.BOLETA); //ajustar si piden tipo
+        Viaje viaje = findViaje(fecha,hora,patBus);
+        Pasajero pasajero = findPasajero(idPasajero);
 
+        if(venta==null || viaje==null || pasajero==null)
+            return false;
+
+        venta.createPasaje(
+                asiento,
+                viaje,
+                pasajero
+        );
+
+        return true;
     }
 
-    public String[][] listAsientosDeViaje(LocalDate fecha, LocalTime hora, String patBus) {
+    public int getMontoVenta(String idDocumento,
+                             TipoDocumento tipo){
 
-        /*Retorna un arreglo unidimensional donde, por cada asiento del
-        viaje con fecha y hora que se indican como parámetro, que
-        posee el bus cuya patente se recibe como tercer parámetro,
-        indica si se encuentra ocupado o libre. El método retorna un
-        arreglo de tamaño cero si no existe un viaje con los datos que se
-        indican*/
+        Venta v=findVenta(idDocumento,tipo);
 
+        if(v==null)
+            return 0;
+
+        return v.getMonto();
     }
 
-    //La Clase getMontoVenta usa el Parametro TipoDocumento el cual es un Enum
-    public int getMontoVenta(String idDocumento, TipoDocumento tipo) {
+    public String getNombrePasajero(IdPersona idPasajero){
 
-        /*Retorna el monto de la venta cuyo idDocumento y tipo se pasan
-        como parámetro. Si no existe una venta con los datos que se
-        indican, retorna cero*/
+        Pasajero p=findPasajero(idPasajero);
 
-    }
+        if(p==null)
+            return null;
 
-    //La Clase getNombrePasajero utiliza la Interface IdPersona
-    public String getNombrePasajero(IdPersona idPasajero) {
-
-        /*Retorna el nombre del pasajero cuyo idPasajero se pasa como
-        parámetro, null en caso de que no exista un pasajero con el id
-        dado*/
-
-
-    }
-
-    public boolean vendePasaje(String idDoc, LocalDate fecha, LocalTime hora, String patBus, int asiento, int idPasajero) { //Supongo que el idPasajero es int, a lo mejor no
-
-        /*Solicita a la venta, cuyo idDocumento y tipo se recibe como
-        parámetros, crear un nuevo pasaje asociado al viaje cuya fecha
-        y hora de salida se indican asociado al bus con la patente dada,
-        ligando al nuevo pasaje, el pasajero correspondiente. Respecto
-        de este último, el método recupera el pasajero cuyo idPersona
-        se recibe como parámetro. El método retorna true si es posible
-        crear el nuevo pasaje asociándolo a la venta. Si no es posible
-        crear el nuevo pasaje porque no existe una venta con el
-        idDocumento y tipo dados o no existe un viaje con los datos
-        dados o no existe un bus cuya patente se indica o no existe un
-        pasajero con el id dado, el método retorna false*/
-
-
-    }
-
-    public String[][] listVentas() {
-
-        /*Retorna un arreglo bidimensional con los datos que se observan
-        en el listado de ventas realizadas de la Figura 12*/
-
-    }
-
-    public String[][] listViajes() {
-
-        /*Retorna un arreglo bidimensional con los datos que se observan
-        en el listado de viajes registrados de la Figura 13*/
-
-    }
-
-    public String[][] listPasajeros(LocalDate fecha, LocalTime hora, String patBus) {
-
-        /*Retorna un arreglo bidimensional con los datos que se observan
-        en el listado de pasajeros del viaje cuyos datos se indican
-        incluyendo la patente del bus que realiza dicho viaje*/
-
+        return p.getNombreCompleto().toString();
     }
 
 
-    //No datos
-    private Cliente findCliente(IdPersona id) {
+    public String[][] getHorariosDisponibles(LocalDate fechaViaje){
 
+        ArrayList<String[]> datos=
+                new ArrayList<>();
+
+        for(Viaje v: viajes){
+
+            if(v.getFecha().equals(fechaViaje)){
+
+                String[] fila={
+                        v.getBus().getPatente(),
+                        v.getHora().toString(),
+                        String.valueOf(v.getPrecio()),
+                        String.valueOf(
+                                v.getNroAsientosDisponibles())
+                };
+
+                datos.add(fila);
+            }
+        }
+
+        return datos.toArray(new String[0][0]);
     }
 
-    private Venta findVenta(String idDocumento, TipoDocumento tipoDocumento) {
+    public String[][] listAsientosDeViaje(LocalDate fecha,
+                                          LocalTime hora,
+                                          String patBus){
 
+        Viaje v=findViaje(fecha,hora,patBus);
+
+        if(v==null)
+            return new String[0][0];
+
+        return v.getAsientos();
     }
 
-    private Bus findBus(String patente) {
+    public String[][] listVentas(){
 
+        String[][] datos=
+                new String[ventas.size()][4];
+
+        for(int i=0;i<ventas.size();i++){
+
+            Venta v=ventas.get(i);
+
+            datos[i][0]=v.getIdDocumento();
+            datos[i][1]=v.getTipo().toString();
+            datos[i][2]=v.getFecha().toString();
+            datos[i][3]=String.valueOf(
+                    v.getMonto());
+        }
+
+        return datos;
     }
 
-    private Viaje findViaje(String fecha, String hora, String patenteBus) {
+    public String[][] listViajes(){
 
+        String[][] datos=
+                new String[viajes.size()][4];
+
+        for(int i=0;i<viajes.size();i++){
+
+            Viaje v=viajes.get(i);
+
+            datos[i][0]=v.getFecha().toString();
+            datos[i][1]=v.getHora().toString();
+            datos[i][2]=v.getBus().getPatente();
+            datos[i][3]=String.valueOf(
+                    v.getPrecio());
+        }
+
+        return datos;
     }
 
-    private Pasajero findPasajero(IdPersona idPersona) {
+    public String[][] listPasajeros(LocalDate fecha,
+                                    LocalTime hora,
+                                    String patBus){
 
+        Viaje v=findViaje(
+                fecha,
+                hora,
+                patBus);
+
+        if(v==null)
+            return new String[0][0];
+
+        return v.getListaPasajeros();
     }
 
-    //Faltan los returns https://www.youtube.com/watch?v=oUMsNjCDT8I
+
+    private Cliente findCliente(IdPersona id){
+
+        for(Cliente c: clientes){
+
+            //ajusta si Cliente hereda Persona
+            return c;
+        }
+
+        return null;
+    }
+
+    private Venta findVenta(String idDocumento,
+                            TipoDocumento tipoDocumento){
+
+        for(Venta v:ventas){
+
+            if(v.getIdDocumento().equals(idDocumento)
+                    && v.getTipo()==tipoDocumento)
+                return v;
+        }
+
+        return null;
+    }
+
+    private Bus findBus(String patente){
+
+        for(Bus b:buses){
+
+            if(b.getPatente().equalsIgnoreCase(
+                    patente))
+                return b;
+        }
+
+        return null;
+    }
+
+    private Viaje findViaje(LocalDate fecha,
+                            LocalTime hora,
+                            String patenteBus){
+
+        for(Viaje v:viajes){
+
+            if(v.getFecha().equals(fecha)
+                    && v.getHora().equals(hora)
+                    && v.getBus().getPatente()
+                    .equalsIgnoreCase(patenteBus))
+                return v;
+        }
+
+        return null;
+    }
+
+    private Pasajero findPasajero(
+            IdPersona idPersona){
+
+        for(Pasajero p:pasajeros){
+
+            if(p.getIdPersona().equals(idPersona))
+                return p;
+        }
+
+        return null;
+    }
 
 }

@@ -90,7 +90,7 @@ public class Viaje {
         asientos[index][0] = "O"; //Ocupado
 
         listaPasajeros[index][0] = pasaje.getPasajero().getIdPersona().toString();
-        listaPasajeros[index][1] = pasaje.getPasajero().getNombreCompleto();
+        listaPasajeros[index][1] = pasaje.getPasajero().getNombreCompleto().toString();
         listaPasajeros[index][2] = pasaje.getPasajero().getNomContacto();
         listaPasajeros[index][3] = pasaje.getPasajero().getFonoContacto();
 

@@ -1,5 +1,4 @@
-
-public class Rut {
+public class Rut implements IdPersona {
 
     private int numero;
     private char dv;
@@ -24,6 +23,20 @@ public class Rut {
 
         return dv;
 
+    }
+    //IdPersona
+    @Override
+    public String toString() {
+        return numero + "-" + dv;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Rut r = (Rut) obj;
+        return this.numero == r.numero && this.dv == r.dv;
     }
 
     public static Rut of(int numero, char dv) {
