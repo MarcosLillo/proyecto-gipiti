@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="20cf9bd7-be5f-4165-8da3-90e667139e18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pasajero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pasajero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rut.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SistemaVentaPasajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SistemaVentaPasajes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Viaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Viaje.java" afterDir="false" />
-    </list>
+    <list default="true" id="20cf9bd7-be5f-4165-8da3-90e667139e18" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +41,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "git-widget-placeholder": "JoaquinCastro",
     "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
@@ -72,7 +65,7 @@
       <workItem from="1777176337282" duration="44000" />
       <workItem from="1777247376920" duration="17263000" />
       <workItem from="1777305233910" duration="9650000" />
-      <workItem from="1777338817478" duration="7353000" />
+      <workItem from="1777338817478" duration="7601000" />
     </task>
     <servers />
   </component>

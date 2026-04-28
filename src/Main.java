@@ -100,12 +100,12 @@ public class Main {
             id = Pasaporte.of(num, nac);
 
             if (id == null) {
-                System.out.println("Pasaporte inválido");
+                System.out.println("Pasaporte invalido");
                 return;
             }
 
         } else {
-            System.out.println("Tipo de documento inválido");
+            System.out.println("Tipo de documento invalido");
             return;
         }
 
@@ -194,7 +194,6 @@ public class Main {
             return;
         }
 
-        // El sistema valida si el cliente existe y el ID no se repite [cite: 700]
         if (!sistema.iniciaVenta(idDoc, tipo, fVenta, idCli)) {
             System.out.println("Venta no permitida (Cliente no existe o ID duplicado).");
             return;
@@ -229,7 +228,7 @@ public class Main {
             IdPersona idPas = Rut.of(numeroPas, dvPas);
 
             if (idPas == null) {
-                System.out.println("RUT inválido.");
+                System.out.println("RUT invalido.");
                 return;
             }
 
@@ -242,7 +241,6 @@ public class Main {
             sistema.vendePasaje(idDoc, fViaje, hViaje, patBus, numAsiento, idPas);
         }
 
-        // 4. Finalización [cite: 708]
         System.out.println("Venta finalizada. Monto total: $" + sistema.getMontoVenta(idDoc, tipo));
     }
 
