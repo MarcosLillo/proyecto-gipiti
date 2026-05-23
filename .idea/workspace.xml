@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="20cf9bd7-be5f-4165-8da3-90e667139e18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,21 +67,13 @@
       <workItem from="1777176337282" duration="44000" />
       <workItem from="1777247376920" duration="17263000" />
       <workItem from="1777305233910" duration="9650000" />
-      <workItem from="1777338817478" duration="8317000" />
+      <workItem from="1777338817478" duration="8907000" />
+      <workItem from="1777431254720" duration="29000" />
+      <workItem from="1779514974305" duration="1107000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Rut.java</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
