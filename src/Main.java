@@ -1,4 +1,6 @@
 //Marcos Lillo
+import modelo.Tratamiento;
+
 import java.util.Scanner;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -68,7 +70,7 @@ public class Main {
     private void createCliente(){
         System.out.println("...:::Crear nuevo cliente:::...");
         System.out.println("-------------------------------");
-        System.out.println("Rut[1] o Pasaporte[2]: ");
+        System.out.println("Rut[1] o utilidades.Pasaporte[2]: ");
         int tipoDoc = sc.nextInt();
         IdPersona id = null;
 
@@ -76,7 +78,7 @@ public class Main {
             System.out.print("R.U.T : ");
             id = Rut.of(sc.nextLine());
         } else if (tipoDoc == 2) {
-            System.out.print("Pasaporte : ");
+            System.out.print("utilidades.Pasaporte : ");
             String num = sc.nextLine();
         } else {
             System.out.println("Tipo de documento inválido");
@@ -134,7 +136,7 @@ public class Main {
         System.out.println("Patente bus: ");
     }
     private void vendePasajes(){
-        System.out.println("...::::Venta de pasajes::::...");
+        System.out.println("...::::modelo.Venta de pasajes::::...");
         System.out.println("::::Datos de la venta");
         System.out.println("ID Documento: ");
         int idDocumento = sc.nextInt();

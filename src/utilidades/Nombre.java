@@ -1,27 +1,23 @@
-//Quejas a Joaquin Castro
+package utilidades;//Quejas a Joaquin Castro
+
+import modelo.Tratamiento;
 
 public class Nombre {
 
-    //Atributos
-    private Tratamiento tratamiento; //Señor, señora
     private String nombres;
     private String apellidoPaterno;
     private String apellidoMaterno;
+    private Tratamiento tratamiento;
 
     //Con o sin constructor, supondre que si
-    public Nombre(Tratamiento tratamiento, String nombres, String apellidoPaterno, String apellidoMaterno) {
+    public Nombre( String nombres, String apellidoPaterno, String apellidoMaterno,  Tratamiento tratamiento) {
 
-        this.tratamiento = tratamiento;
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
+        this.tratamiento = tratamiento;
 
     }
-
-    public Tratamiento getTratamiento() {
-        return tratamiento;
-    }
-
     public void setTratamiento(Tratamiento tratamiento) {
         this.tratamiento = tratamiento;
     }
@@ -55,7 +51,14 @@ public class Nombre {
     }
 
     public boolean equals(Object Otro) {
+
+        //Modifique mi propio codigo por que no inclui esto
+        if (this == Otro) return true;
+        if (Otro == null || getClass() != Otro.getClass()) return false;
+        //Osea la cosa basica
+
         Nombre persona = (Nombre) Otro;
+
         return this.nombres.equalsIgnoreCase(persona.nombres) && this.apellidoPaterno.equalsIgnoreCase(persona.apellidoPaterno) && this.apellidoMaterno.equalsIgnoreCase(persona.apellidoMaterno);
     }
 

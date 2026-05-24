@@ -1,3 +1,5 @@
+package modelo;
+
 //Marcos Lillo
 public class Pasaje {
     private long numero;

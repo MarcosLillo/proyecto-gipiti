@@ -1,5 +1,8 @@
-//Marcos Lillo
+package modelo;//Marcos Lillo
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Venta   {
     private  String idDocumento;
@@ -47,6 +50,5 @@ public class Venta   {
         }
         return total;
     }
-
 
 }

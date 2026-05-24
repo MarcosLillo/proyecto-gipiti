@@ -1,4 +1,4 @@
-//Quejas a Joaquin Castro
+package modelo;//Quejas a Joaquin Castro
 
 public enum Tratamiento {
 
