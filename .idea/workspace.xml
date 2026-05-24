@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="20cf9bd7-be5f-4165-8da3-90e667139e18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vista/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/vista/UISVP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/UISVP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +79,7 @@
       <workItem from="1777338817478" duration="8907000" />
       <workItem from="1777431254720" duration="29000" />
       <workItem from="1779514974305" duration="1107000" />
-      <workItem from="1779574057713" duration="7306000" />
+      <workItem from="1779574057713" duration="13100000" />
     </task>
     <servers />
   </component>
