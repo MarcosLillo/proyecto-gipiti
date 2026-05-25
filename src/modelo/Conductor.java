@@ -1,10 +1,9 @@
 package modelo;
 import java.util.*;
 
-
+import utilidades.Direccion;
 import utilidades.IdPersona;
 import utilidades.Nombre;
-import utilidades.Direccion;
 
 public class Conductor extends Tripulante  {
     private List<Viaje> viajes;

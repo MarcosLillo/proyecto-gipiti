@@ -4,20 +4,19 @@ import utilidades.Direccion;
 import utilidades.IdPersona;
 import utilidades.Nombre;
 
-public abstract class Tripulante extends Persona {
+public abstract class Tripulante extends Persona  {
     private Direccion direccion;
     private Empresa empresa;
 
-
-    public Tripulante(IdPersona idPersona, Nombre nombreCompleto, Direccion dir) {
+    public Tripulante(IdPersona idPersona, Nombre nombreCompleto, Direccion direccion, Empresa empresa) {
         super(idPersona, nombreCompleto);
-        this.direccion = dir;
+        this.direccion = direccion;
+
         this.empresa = empresa;
     }
 
-
     public Direccion getDireccion() {
-        return this.direccion;
+        return direccion;
     }
 
     public void setDireccion(Direccion direccion) {
@@ -25,6 +24,5 @@ public abstract class Tripulante extends Persona {
     }
 
     public abstract void addViaje(Viaje viaje);
-
     public abstract int getNroViajes();
 }
