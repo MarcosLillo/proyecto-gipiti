@@ -1,3 +1,4 @@
+//Marcos Lillo
 package modelo;
 
 public class PagoTarjeta extends Pago {
