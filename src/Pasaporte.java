@@ -1,3 +1,6 @@
+package utilidades;
+
+
 import java.util.Objects;
 
 public class Pasaporte implements IdPersona{

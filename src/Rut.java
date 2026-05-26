@@ -1,3 +1,5 @@
+package utilidades;
+
 import java.text.DecimalFormat;
 public class Rut implements IdPersona {
     private int numero;

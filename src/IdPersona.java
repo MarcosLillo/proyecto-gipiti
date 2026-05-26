@@ -1,3 +1,4 @@
+package utilidades;
 public interface IdPersona {
     public String toString();
     public boolean equals(Object otro);
