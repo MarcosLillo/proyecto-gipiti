@@ -11,12 +11,15 @@ public class UISVP {
 
     //Lo que carateriza a un singleton
     private static UISVP instance;
+    private final SistemaVentaPasajes svp = SistemaVentaPasajes.getInstance();
+    private final ControladorEmpresa controladorEmpresa = ControladorEmpresa.getInstance();
 
     private Scanner sc;
 
     private UISVP() {
         Scanner sc = new Scanner(System.in);
     }
+    sc.useDelimiter("\r\n|[\n\r\u2028\u2029\u0085,;\t]");
 
     //Esto asegura que se cree una instancia si no la hay, si la hay, que se mantenga igual osea que se reutilize, es caracteristico de los singleton
     public static UISVP getInstance() {
@@ -105,6 +108,82 @@ public class UISVP {
                 default:
                     System.out.println("Opcion equivocada, muy mal, reflexiona ante tus acciones");
             }
+        }
+    }
+
+    //Crear empresa (1)
+    private void createEmpresa() {
+        try {
+            System.out.println("   ...::::: Creando una nueva Empresa :::::...");
+            String rutStr = obtenerRutStr("R.U.T: ");
+            Rut rut = parseRut(rutStr);
+            if (rut == null) return;
+
+            String nombre = obtenerTexto("Nombre: ");
+            String url    = obtenerTexto("url: ");
+
+            controladorEmpresa.createEmpresa(rut, nombre, url);
+            System.out.println("   ...::::: Empresa guardada exitosamente :::::..");
+        } catch (SistemaVentaPasajesException e) {
+            System.out.println("*** Error: " + e.getMessage() + " ***");
+        }
+    }
+
+    //Contratar tripulante
+    private void contrataTripulante() {
+        try {
+            System.out.println("   ...:::::: Contratando un nuevo Tripulante :::::...");
+
+            System.out.println(":::: Dato de la Empresa");
+            String rutEmpStr = obtenerRutStr("R.U.T: ");
+            Rut rutEmp = parseRut(rutEmpStr);
+            if (rutEmp == null) return;
+
+            System.out.println(":::: Datos tripulante");
+            int tipoTripulante = obtenerNumero("Auxiliar[1] o Conductor[2]: ", 1, 2);
+
+            int eleccionId = obtenerNumero("Rut[1] o Pasaporte[2]: ", 1, 2);
+            IdPersona id = obtenerIdPersona(eleccionId);
+
+            int eleccionTrat = obtenerNumero("Sr.[1] o Sra.[2]: ", 1, 2);
+            Tratamiento tratamiento = (eleccionTrat == 1) ? Tratamiento.SR : Tratamiento.SRA;
+
+            String nombre   = obtenerTexto("Nombres: ");
+            String apePat   = obtenerTexto("Apellido Paterno: ");
+            String apeMat   = obtenerTexto("Apellido Materno: ");
+            Nombre nombreTripulante = new Nombre(nombre, apePat, apeMat, tratamiento);
+
+            String calle  = obtenerTexto("Calle: ");
+            int numero    = obtenerNumero("Numero: ", 0, 999999999);
+            String comuna = obtenerTexto("Comuna: ");
+            Direccion direccion = new Direccion(calle, numero, comuna);
+
+            if (tipoTripulante == 1) {
+                controladorEmpresa.hireAuxiliarForEmpresa(rutEmp, id, nombreTripulante, direccion);
+                System.out.println("   ...::::: Auxiliar contratado exitosamente :::::..");
+            } else {
+                controladorEmpresa.hireConductorForEmpresa(rutEmp, id, nombreTripulante, direccion);
+                System.out.println("   ...::::: Conductor contratado exitosamente :::::..");
+            }
+        } catch (SistemaVentaPasajesException e) {
+            System.out.println("*** Error: " + e.getMessage() + " ***");
+        }
+    }
+
+    //Crear terminal
+    private void createTerminal() {
+        try {
+            System.out.println("   ...:::::: Creando un nuevo Terminal :::::...");
+            String nombre = obtenerTexto("Nombre: ");
+            String calle  = obtenerTexto("Calle: ");
+            int numero    = obtenerNumero("Numero: ", 0, 999999999);
+            String comuna = obtenerTexto("Comuna: ");
+
+            Direccion direccion = new Direccion(calle, numero, comuna);
+            controladorEmpresa.createTerminal(nombre, direccion);
+            System.out.println("   ...::::: Terminal guardado exitosamente :::::..");
+        } catch (SistemaVentaPasajesException e) {
+            System.out.println("*** Error al crear el terminal: " + e.getMessage() + " ***");
         }
     }
 
@@ -379,35 +458,177 @@ public class UISVP {
         }
     }
 
-    /*
-        private void consultaViajesDisponibles() {
-        System.out.println("...::::Consulta de Viajes Disponibles por Fecha::::...");
-        System.out.println("------------------------------------------------------");
-        System.out.print("Ingrese fecha [dd/MM/yyyy]: ");
-        LocalDate fecha = LocalDate.parse(sc.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        String[][] viajes = sistema.getHorariosDisponibles(fecha);
+    //Lista de llegada / salida (12)
+    private void listLlegadasSalidasTerminal() {
+        try {
+            String nombreTerminal = obtenerTexto("Nombre terminal: ");
+            LocalDate fecha = obtenerFecha("Fecha[dd/MM/yyyy]: ");
 
-        if (viajes.length == 0) {
-            System.out.println(" No existen viajes disponibles para la fecha: " + fecha);
-            System.out.println("Por favor, intente con otra fecha.");
-            return;
+            System.out.println("\n...::::: Listado de llegadas y salidas de un terminal :::::..");
+            System.out.printf("         Nombre terminal : %s%n", nombreTerminal);
+            System.out.printf("         Fecha[dd/MM/yyyy] : %s%n", fecha.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
+
+            String[][] llegadasSalidas = controladorEmpresa.listLlegadasSalidasTerminal(nombreTerminal, fecha);
+
+            if (llegadasSalidas.length == 0) {
+                System.out.println("..:: No hay llegadas ni salidas registradas para esa fecha ::..");
+            } else {
+                System.out.println("*----------------*--------*-------------*-------------------------*-----------------*");
+                System.out.println("| LLEGADA/SALIDA | HORA   | PATENTE BUS | NOMBRE EMPRESA          | NRO. PASAJEROS  |");
+                System.out.println("*----------------*--------*-------------*-------------------------*-----------------*");
+                for (String[] registro : llegadasSalidas) {
+                    System.out.printf("| %-14s | %-6s | %-11s | %-23s | %-15s |%n",
+                            registro[0], registro[1], registro[2], registro[3], registro[4]);
+                    System.out.println("*----------------*--------*-------------*-------------------------*-----------------*");
+                }
+            }
+        } catch (SistemaVentaPasajesException e) {
+            System.out.println("*** Error: " + e.getMessage() + " ***");
         }
-
-        System.out.println("\n Se encontraron " + viajes.length + " viaje(s) disponible(s) para: " + fecha);
-        System.out.println("------------------------------------------------------\n");
-        System.out.printf("| %-10s | %-10s | %-10s | %-15s |%n",
-                "PATENTE BUS", "SALIDA", "PRECIO", "ASIENTOS LIBRES");
-        System.out.println("|-----------+-----------+-----------+------------------|");
-
-        for (int i = 0; i < viajes.length; i++) {
-            System.out.printf("| %-10s | %-10s | $%-10s | %-15s |%n",
-                    viajes[i][0],     // Patente del bus
-                    viajes[i][1],     // Hora de salida
-                    viajes[i][2],     // Precio
-                    viajes[i][3]);    // Asientos disponibles
-        }
-
     }
-     */
+
+    //(13)
+    private void listVentasEmpresa() {
+        try {
+            System.out.println("...::::: Listado de ventas de una empresa :::::..");
+            String rutStr = obtenerRutStr("R.U.T: ");
+            Rut rut = parseRut(rutStr);
+            if (rut == null) return;
+
+            String[][] ventas = controladorEmpresa.listVentasEmpresa(rut);
+
+            if (ventas.length == 0) {
+                System.out.println("..:: La empresa no registra ventas ::..");
+            } else {
+                System.out.println("*-----------*----------*---------------*----------------*");
+                System.out.println("| FECHA     | TIPO     | MONTO PAGADO  | TIPO PAGO      |");
+                System.out.println("*-----------*----------*---------------*----------------*");
+                for (String[] venta : ventas) {
+                    System.out.printf("| %-9s | %-8s | %-13s | %-14s |%n",
+                            venta[2], venta[1], venta[3], venta[4]);
+                    System.out.println("*-----------*----------*---------------*----------------*");
+                }
+            }
+        } catch (SistemaVentaPasajesException e) {
+            System.out.println("*** Error: " + e.getMessage() + " ***");
+        }
+    }
+
+    //Metodos necesarios
+    private String obtenerTexto(String mensaje) {
+        String input;
+        do {
+            System.out.printf("%40s", mensaje);
+            input = sc.next().trim();
+            if (input.isEmpty()) {
+                System.out.println("La entrada no puede estar vacía.");
+            }
+        } while (input.isEmpty());
+        return input;
+    }
+
+    private int obtenerNumero(String mensaje, int min, int max) {
+        while (true) {
+            System.out.printf("%40s", mensaje);
+            try {
+                int numero = sc.nextInt();
+                if (numero >= min && numero <= max) {
+                    return numero;
+                }
+                System.out.printf("Ingrese un número entre %d y %d.%n", min, max);
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida. Debe ser un número.");
+                sc.next();
+            }
+        }
+    }
+
+    private LocalDate obtenerFecha(String mensaje) {
+        while (true) {
+            System.out.printf("%40s", mensaje);
+            try {
+                String fechaStr = sc.next().trim();
+                return LocalDate.parse(fechaStr, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            } catch (Exception e) {
+                System.out.println("Formato de fecha no válido. Debe ser dd/MM/yyyy.");
+            }
+        }
+    }
+
+    private LocalTime obtenerHora(String mensaje) {
+        while (true) {
+            System.out.printf("%40s", mensaje);
+            try {
+                String horaStr = sc.next().trim();
+                return LocalTime.parse(horaStr, DateTimeFormatter.ofPattern("HH:mm"));
+            } catch (Exception e) {
+                System.out.println("Formato de hora no válido. Debe ser HH:mm.");
+            }
+        }
+    }
+
+    private long obtenerLong(String msg) {
+        while (true) {
+            System.out.printf("%40s", msg);
+            try {
+                return sc.nextLong();
+            } catch (InputMismatchException e) {
+                System.out.println("Entrada no válida. Debe ser un número.");
+                sc.next();
+            }
+        }
+    }
+
+    private boolean comprobarMatricula(String patente) {
+        return (!patente.matches("^[a-zA-Z]{2}\\d{4}$")) && (!patente.matches("^[a-zA-Z]{4}\\d{2}$"));
+    }
+
+    private String obtenerRutStr(String mensaje) {
+        String rut;
+        do {
+            rut = obtenerTexto(mensaje);
+            if ((!rut.matches("\\d{7,8}-[0-9Kk]")) && (!rut.matches("\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9Kk]"))) {
+                System.out.println("Formato de RUT inválido [XX.XXX.XXX-X o XXXXXXXX-X].");
+                rut = null;
+            }
+        } while (rut == null);
+        return rut;
+    }
+
+    private Rut parseRut(String rut) {
+        if (rut.matches("\\d{1,2}\\.\\d{3}\\.\\d{3}-[0-9Kk]")) {
+            String[] partes = rut.split("[.-]");
+            return new Rut(Integer.parseInt(partes[0] + partes[1] + partes[2]), partes[3].charAt(0));
+        } else if (rut.matches("\\d{7,8}-[0-9Kk]")) {
+            String[] partes = rut.split("-");
+            return new Rut(Integer.parseInt(partes[0]), partes[1].charAt(0));
+        }
+        System.out.println("Formato de RUT inválido.");
+        return null;
+    }
+
+    private Pasaporte obtenerPasaporte(String msg) {
+        while (true) {
+            String pasaporte = obtenerTexto(msg);
+            if (pasaporte.matches("[A-Za-z0-9]+")) {
+                String nacionalidad = obtenerTexto(">> Nacionalidad: ");
+                return new Pasaporte(pasaporte, nacionalidad);
+            }
+            System.out.println("Formato de pasaporte inválido.");
+        }
+    }
+
+    private IdPersona obtenerIdPersona(int tipo) {
+        if (tipo == 1) {
+            return parseRut(obtenerRutStr(">> Rut: "));
+        } else {
+            return obtenerPasaporte(">> Pasaporte: ");
+        }
+    }
+
+    private LocalTime parseHora(String hor) {
+        String[] partes = hor.split(":");
+        return LocalTime.of(Integer.parseInt(partes[0]), Integer.parseInt(partes[1]));
+    }
 
 }

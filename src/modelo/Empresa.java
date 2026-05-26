@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Empresa  {
+
     private Rut rut;
     private String nombre;
     private String url;
