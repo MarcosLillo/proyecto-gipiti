@@ -1,8 +1,9 @@
 package persistencia;
 
+import excepciones.SVPException;
+import java.io.*;
 import modelo.*; //Llama todo
-import utilidades.IdPersona;
-import utilidades.Rut;
+import utilidades.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,7 @@ public class IOSVP {
         invocados. Retorna un arreglo con todos los objetos creados. Lanza
         SVPException cuando no es posible abrir y/o leer el archivo
         asociando a la excepción un mensaje con el problema ocurrido*/
+        File archivo = new File("SVPDatosIniciales.txt");
     }
 
     public void saveControladores(Object controladores) {

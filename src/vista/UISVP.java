@@ -2,7 +2,7 @@ package vista;
 
 import controlador.ControladorEmpresa;
 import controlador.SistemaVentaPasajes;
-import excepciones.SistemaVentaPasajesException;
+import excepciones.SVPException;
 import modelo.TipoDocumento;
 import utilidades.*;
 
@@ -131,7 +131,7 @@ public class UISVP {
 
             controladorEmpresa.createEmpresa(rut, nombre, url);
             System.out.println("   ...::::: Empresa guardada exitosamente :::::..");
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error: " + e.getMessage() + " ***");
         }
     }
@@ -172,7 +172,7 @@ public class UISVP {
                 controladorEmpresa.hireConductorForEmpresa(rutEmp, id, nombreTripulante, direccion);
                 System.out.println("   ...::::: Conductor contratado exitosamente :::::..");
             }
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error: " + e.getMessage() + " ***");
         }
     }
@@ -189,7 +189,7 @@ public class UISVP {
             Direccion direccion = new Direccion(calle, numero, comuna);
             controladorEmpresa.createTerminal(nombre, direccion);
             System.out.println("   ...::::: Terminal guardado exitosamente :::::..");
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error al crear el terminal: " + e.getMessage() + " ***");
         }
     }
@@ -216,7 +216,7 @@ public class UISVP {
 
             svp.createCliente(id, nombreCompleto, fono, email);
             System.out.println("   ...::::: Cliente creado exitosamente :::::..");
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error al crear el cliente: " + e.getMessage() + " ***");
         }
     }
@@ -237,7 +237,7 @@ public class UISVP {
 
             controladorEmpresa.createBus(patente, marca, modelo, nroAsientos, rutEmp);
             System.out.println("   ...::::: Bus guardado exitosamente :::::..");
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error al crear el bus: " + e.getMessage() + " ***");
         }
     }
@@ -279,7 +279,7 @@ public class UISVP {
 
             svp.createViaje(fecha, hora, precio, duracion, patBus, idTripulantes, comunas);
             System.out.println("   ...::::: Viaje guardado exitosamente :::::..");
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error al crear el viaje: " + e.getMessage() + " ***");
         }
     }
@@ -389,7 +389,7 @@ public class UISVP {
                             horarios[eleccion][0], asientosSeleccionados[e], id);
                     System.out.println(":::: Pasaje agregado exitosamente");
 
-                } catch (SistemaVentaPasajesException i) {
+                } catch (SVPException i) {
                     if (i.getMessage().equals("No existe pasajero con el id indicado")) {
                         System.out.println("..:: " + i.getMessage() + " ::..");
                         System.out.println(":::: Creación de pasajero ::::");
@@ -432,7 +432,7 @@ public class UISVP {
 
             System.out.println("   ...::::: Venta realizada exitosamente :::::..");
 
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error al realizar la venta: " + e.getMessage() + " ***");
         }
     }
@@ -501,7 +501,7 @@ public class UISVP {
                     System.out.println("*------------*--------------------------*--------------------------*----------------*");
                 }
             }
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error: " + e.getMessage() + " ***");
         }
     }
@@ -525,7 +525,7 @@ public class UISVP {
                     System.out.println("*---------------*-------------------------*---------------------------------------------*-------------------*--------------*--------------*");
                 });
             }
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("\t\t..:: " + e.getMessage() + " ::..");
         }
     }
@@ -554,7 +554,7 @@ public class UISVP {
                     System.out.println("*----------------*--------*-------------*-------------------------*-----------------*");
                 }
             }
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error: " + e.getMessage() + " ***");
         }
     }
@@ -581,7 +581,7 @@ public class UISVP {
                     System.out.println("*-----------*----------*---------------*----------------*");
                 }
             }
-        } catch (SistemaVentaPasajesException e) {
+        } catch (SVPException e) {
             System.out.println("*** Error: " + e.getMessage() + " ***");
         }
     }
