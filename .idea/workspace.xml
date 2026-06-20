@@ -4,7 +4,6 @@
     <list default="true" id="20cf9bd7-be5f-4165-8da3-90e667139e18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/persistencia/IOSVP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistencia/IOSVP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/UISVP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/UISVP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +88,7 @@
       <workItem from="1779758652174" duration="6033000" />
       <workItem from="1780434070112" duration="89000" />
       <workItem from="1781644768873" duration="2211000" />
-      <workItem from="1781974669720" duration="2697000" />
+      <workItem from="1781974669720" duration="11753000" />
     </task>
     <servers />
   </component>
