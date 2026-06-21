@@ -3,7 +3,7 @@ package modelo;
 import java.util.*;
 import utilidades.Direccion;
 
-public class Terminal {
+public class Terminal implements java.io.Serializable {
     private String nombre;
     private Direccion dir;
     private List<Viaje> viajesLlegada, viajesSalida;

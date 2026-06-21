@@ -1,7 +1,7 @@
 //Marcos Lillo
 package modelo;
 
-public class PagoTarjeta extends Pago {
+public class PagoTarjeta extends Pago implements java.io.Serializable {
     private long nroTarjeta;
 
     public PagoTarjeta(int monto, long nroTarjeta) {

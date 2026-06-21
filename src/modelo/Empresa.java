@@ -8,7 +8,7 @@ import utilidades.Direccion;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Empresa  {
+public class Empresa implements java.io.Serializable {
 
     private Rut rut;
     private String nombre;

@@ -7,7 +7,7 @@ import utilidades.Nombre;
 
 import java.util.*;
 
-public class Auxiliar extends Tripulante  {
+public class Auxiliar extends Tripulante implements java.io.Serializable {
     private List<Viaje> viajes;
 
     public Auxiliar(IdPersona idPersona, Nombre nombreCompleto, Direccion direccion, Empresa empresa) {

@@ -3,7 +3,7 @@ package modelo;
 import utilidades.IdPersona;
 import utilidades.Nombre;
 
-public abstract class Persona  {
+public abstract class Persona implements java.io.Serializable {
     private IdPersona idPersona;
     private Nombre nombreCompleto;
     private String telefono;

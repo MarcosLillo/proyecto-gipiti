@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Venta {
+public class Venta implements java.io.Serializable {
     private final String idDocumento;
     private final TipoDocumento tipo;
     private final LocalDate fecha;

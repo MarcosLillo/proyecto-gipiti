@@ -5,7 +5,7 @@ import utilidades.Direccion;
 import utilidades.IdPersona;
 import utilidades.Nombre;
 
-public abstract class Tripulante extends Persona  {
+public abstract class Tripulante extends Persona implements java.io.Serializable {
     private Direccion direccion;
     private Empresa empresa;
 

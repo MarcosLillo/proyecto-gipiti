@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.*;
 import java.util.stream.IntStream;
 
-public class Viaje {
+public class Viaje implements java.io.Serializable {
     private LocalDate fecha;
     private LocalTime hora;
     private int precio;

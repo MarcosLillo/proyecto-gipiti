@@ -3,23 +3,19 @@ package modelo;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
-public class Pasaje  {
+public class Pasaje implements java.io.Serializable  {
 
     private long numero;
     private int asiento;
-
     private Viaje viaje;
     private Pasajero pasajero;
-
     private Venta venta;
 
     //Constructor
     public Pasaje(int asiento, Viaje viaje, Pasajero pasajero, Venta venta) {
         this.asiento = asiento;
         this.venta = venta;
-
         this.numero = generarNumero();
-
         this.pasajero = pasajero;
         this.viaje = viaje;
     }

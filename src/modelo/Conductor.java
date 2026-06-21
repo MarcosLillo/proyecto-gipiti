@@ -6,7 +6,7 @@ import utilidades.Direccion;
 import utilidades.IdPersona;
 import utilidades.Nombre;
 
-public class Conductor extends Tripulante  {
+public class Conductor extends Tripulante implements java.io.Serializable {
     private List<Viaje> viajes;
 
     public Conductor(IdPersona idPersona, Nombre nombreCompleto, Direccion direccion, Empresa empresa) {

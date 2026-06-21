@@ -1,6 +1,6 @@
 package utilidades;//Quejas a Joaquin Castro
 
-public enum Tratamiento {
+public enum Tratamiento implements java.io.Serializable {
 
     SR, SRA;
 

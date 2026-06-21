@@ -1,6 +1,6 @@
 package modelo;
 
-public abstract class Pago  {
+public abstract class Pago implements java.io.Serializable {
     private int monto;
 
     public Pago(int monto){

@@ -2,7 +2,7 @@ package utilidades;
 
 import java.util.Objects;
 
-public class Direccion  {
+public class Direccion implements java.io.Serializable {
     private String calle, comuna;
     private int numero;
 

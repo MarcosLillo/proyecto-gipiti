@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.*;
 
-public class Bus   {
+public class Bus implements java.io.Serializable {
     // Atributos
     private String patente, marca, modelo;
     private int nroAsientos;

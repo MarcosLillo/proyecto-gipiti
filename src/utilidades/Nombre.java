@@ -1,6 +1,6 @@
 package utilidades;
 
-public class Nombre  {
+public class Nombre implements java.io.Serializable {
     // Atributos
 
     private String nombres, apellidoPaterno, apellidoMaterno;

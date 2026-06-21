@@ -2,7 +2,7 @@ package utilidades;
 
 import java.util.Objects;
 
-public class Pasaporte implements IdPersona{
+public class Pasaporte implements IdPersona, java.io.Serializable {
     private String numero;
     private String nacionalidad;
 

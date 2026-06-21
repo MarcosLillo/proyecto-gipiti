@@ -2,7 +2,7 @@ package utilidades;
 
 import java.text.DecimalFormat;
 
-public class Rut implements IdPersona {
+public class Rut implements IdPersona, java.io.Serializable {
     private int numero;
     private char dv;
 
