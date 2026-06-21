@@ -5,22 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controlador/ControladorEmpresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controlador/ControladorEmpresa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controlador/SistemaVentaPasajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controlador/SistemaVentaPasajes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Auxiliar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Auxiliar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Bus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Conductor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Conductor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Empresa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Empresa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Pago.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Pago.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/PagoEfectivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/PagoEfectivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/PagoTarjeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/PagoTarjeta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Pasaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Pasaje.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Pasajero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Pasajero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Terminal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/TipoDocumento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/TipoDocumento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Tripulante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Tripulante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Venta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Venta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modelo/Viaje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/modelo/Viaje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistencia/IOSVP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistencia/IOSVP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vista/UISVP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/UISVP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +91,7 @@
       <workItem from="1779758652174" duration="6033000" />
       <workItem from="1780434070112" duration="89000" />
       <workItem from="1781644768873" duration="2211000" />
-      <workItem from="1781974669720" duration="26628000" />
+      <workItem from="1781974669720" duration="32028000" />
     </task>
     <servers />
   </component>

@@ -40,7 +40,7 @@ public class UISVP {
     public void menu() {
         boolean salir = false;
 
-        while (salir != true) { //(!salir)
+        while (!salir) { //(salir != true), al final el propio codigo te lo marca como una sutil advertencia que robo
 
             System.out.println("===============================================");
             System.out.println("          ...::: Menú principal :::...         ");
@@ -57,7 +57,11 @@ public class UISVP {
             System.out.println("11) Listar empresas");
             System.out.println("12) Listar llegadas/salidas de terminal");
             System.out.println("13) Listar ventas de empresa");
-            System.out.println("14) Salir");
+            System.out.println("14) Generar pasajes venta");
+            System.out.println("15) Leer datos iniciales");
+            System.out.println("16) Guardar datos del sistema");
+            System.out.println("17) Leer datos del sistema");
+            System.out.println("18) Salir");
             System.out.println("------------------------------------------------");
             System.out.print("..:: Ingrese número de opción: ");
             int opcion;
@@ -110,6 +114,18 @@ public class UISVP {
                     listVentasEmpresa();
                     break;
                 case 14:
+                    generatePasajesVenta();
+                    break;
+                case 15:
+                    readDatosIniciales();
+                    break;
+                case 16:
+                    saveDatosSistema();
+                    break;
+                case 17:
+                    readDatosSistema();
+                    break;
+                case 18:
                     salir = true;
                     break;
                 default:
@@ -583,6 +599,52 @@ public class UISVP {
             }
         } catch (SVPException e) {
             System.out.println("*** Error: " + e.getMessage() + " ***");
+        }
+    }
+
+    //Añadido del avance 3
+    private void readDatosIniciales() {
+        try {
+            svp.readDatosIniciales();
+        } catch (SVPException e) {
+            System.out.println("..:: " +e.getMessage() +" ::..");
+        }
+    }
+
+    private void generatePasajesVenta() throws SVPException {
+        try {
+            TipoDocumento tipo;
+
+            String idDoc = obtenerTexto("ID del documento: ");
+            int tipoDoc = obtenerNumero("Boleta[1] o Factura[2]: ", 1, 2);
+
+            if (tipoDoc == 1) {
+                tipo = TipoDocumento.BOLETA;
+            } else {
+                tipo = TipoDocumento.FACTURA;
+            }
+
+            svp.generatePasajesVenta(idDoc, tipo);
+        } catch (SVPException e) {
+            System.out.println("Error: " +e.getMessage());
+        }
+    }
+
+    private void saveDatosSistema() {
+        try {
+            svp.saveDatosSistema();
+        } catch (SVPException e) {
+            System.out.println("..:: " +e.getMessage() +" ::..");
+        }
+    }
+
+    private void readDatosSistema() {
+        try {
+            svp.readDatosSistema();
+
+            System.out.println("\n..:: Datos leidos exitosamente ::..\n");
+        } catch (SVPException e) {
+            System.out.println("..:: " + e.getMessage() + " ::..");
         }
     }
 

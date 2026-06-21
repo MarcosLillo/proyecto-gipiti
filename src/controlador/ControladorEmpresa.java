@@ -180,8 +180,32 @@ public class ControladorEmpresa implements java.io.Serializable {
         return listVentasEmpresa;
     }
 
-    // Finds
+    //Avance 3
+    protected void setInstanciaPersistente(ControladorEmpresa instanciaPersistente) {
+        instancia = instanciaPersistente;
+    }
 
+    protected void setDatosIniciales(Object[] objetos) {
+        Arrays.stream(objetos).toList().forEach(e -> {
+            if (e instanceof Bus) {
+                buses.add((Bus) e);
+            }
+
+            if (e instanceof Empresa) {
+                empresas.add((Empresa) e);
+            }
+
+            if (e instanceof Terminal) {
+                terminales.add((Terminal) e);
+            }
+
+            if (e instanceof Tripulante) {
+                tripulantes.add((Tripulante) e);
+            }
+        });
+    }
+
+    //Finds
     protected Optional<Empresa> findEmpresa(Rut rut) {
         return this.empresas.stream().filter(e -> e.getRut().equals(rut)).findFirst();
     }

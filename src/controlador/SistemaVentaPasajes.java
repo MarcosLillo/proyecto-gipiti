@@ -2,14 +2,14 @@ package controlador;
 
 import excepciones.SVPException;
 import modelo.*;
-
+import persistencia.IOSVP;
 import utilidades.IdPersona;
 import utilidades.Nombre;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -17,6 +17,7 @@ import java.util.stream.IntStream;
 public class SistemaVentaPasajes implements java.io.Serializable {
     private static SistemaVentaPasajes svp;
     private static final ControladorEmpresa controladorEmpresa = ControladorEmpresa.getInstance();
+    private static final IOSVP persistencia = IOSVP.getInstance();
 
     private List<Cliente> clientes = new ArrayList<>();
     private List<Viaje> viajes = new ArrayList<>();
@@ -306,6 +307,65 @@ public class SistemaVentaPasajes implements java.io.Serializable {
 
         return listPasajeros;
     }
+
+    //Añadido del avance 3
+    public void generatePasajesVenta(String idDocumento, TipoDocumento tipo) throws SVPException {
+
+        if (findVenta(idDocumento, tipo).isPresent()) {
+            Venta venta = findVenta(idDocumento, tipo).get();
+
+            persistencia.savePasajesDeVenta(venta.getPasajes(), (idDocumento +tipo.toString().toLowerCase()));
+        } else {
+            throw new SVPException("No se han encontrado ventas con los datos especificados");
+        }
+
+    }
+
+    public void readDatosIniciales() throws SVPException {
+
+        Object[] objetos = persistencia.readDatosIniciales();
+
+        Arrays.stream(objetos).toList().stream().forEach(e -> {
+            if (e instanceof Cliente) {
+                clientes.add((Cliente) e);
+            }
+
+            if (e instanceof Pasajero) {
+                pasajeros.add((Pasajero) e);
+            }
+
+            if (e instanceof Viaje) {
+                viajes.add((Viaje) e);
+            }
+        });
+        controladorEmpresa.setDatosIniciales(objetos);
+    }
+
+    public void saveDatosSistema() throws SVPException {
+        Object[] objetos = new Object[2];
+
+        objetos[0] = SistemaVentaPasajes.getInstance();
+        objetos[1] = ControladorEmpresa.getInstance();
+
+        persistencia.saveControladores(objetos);
+
+        System.out.println("\n..:: Datos de Controladores guardados ::..\n");
+    }
+
+    public void readDatosSistema() {
+        Object[] objetos = persistencia.readControladores();
+
+        if (objetos[0] instanceof SistemaVentaPasajes) {
+            svp = (SistemaVentaPasajes) objetos[0];
+            controladorEmpresa.setInstanciaPersistente((ControladorEmpresa) objetos[1]);
+        } else {
+            svp = (SistemaVentaPasajes) objetos[1];
+            controladorEmpresa.setInstanciaPersistente((ControladorEmpresa) objetos[0]);
+
+            System.out.println("\n..:: Datos de Controladores actualizados ::..\n");
+        }
+    }
+
 
     protected Optional<Pasajero> findPasajero(IdPersona id) {
         return this.pasajeros.stream().filter(p -> p.getIdPersona().equals(id)).findFirst();

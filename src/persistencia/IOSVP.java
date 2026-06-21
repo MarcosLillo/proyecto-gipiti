@@ -342,7 +342,7 @@ public class IOSVP {
         }
     }
 
-    public void savePasajesDeVentas(Pasaje[] pasajes, String nombreArchivo) throws SVPException {
+    public void savePasajesDeVenta(Pasaje[] pasajes, String nombreArchivo) throws SVPException {
 
         try {
 
