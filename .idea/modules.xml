@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/AVANSEUtilidad.iml" filepath="$PROJECT_DIR$/AVANSEUtilidad.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/proyecto-gipiti.iml" filepath="$PROJECT_DIR$/proyecto-gipiti.iml" />
+>>>>>>> origin/JoaquinCastroV2
     </modules>
   </component>
 </project>
