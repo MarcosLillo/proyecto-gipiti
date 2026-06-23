@@ -3,6 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="20cf9bd7-be5f-4165-8da3-90e667139e18" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SVPObjetos.obj" beforeDir="false" afterPath="$PROJECT_DIR$/SVPObjetos.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/proyecto-gipiti/SVPDatosIniciales.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/proyecto-gipiti/persistencia/IOSVP.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/proyecto-gipiti/persistencia/IOSVP.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SVPDatosIniciales.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SVPDatosIniciales.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistencia/IOSVP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistencia/IOSVP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,24 +47,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "JoaquinCastroV2",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/joaqu/IdeaProjects/proyecto-gipiti",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.inline.completion",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;JoaquinCastroV2&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/joaqu/IdeaProjects/proyecto-gipiti&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.inline.completion&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\joaqu\IdeaProjects\proyecto-gipiti" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -87,7 +97,8 @@
       <workItem from="1779758652174" duration="6033000" />
       <workItem from="1780434070112" duration="89000" />
       <workItem from="1781644768873" duration="2211000" />
-      <workItem from="1781974669720" duration="33983000" />
+      <workItem from="1781974669720" duration="34644000" />
+      <workItem from="1782180321456" duration="3993000" />
     </task>
     <servers />
   </component>

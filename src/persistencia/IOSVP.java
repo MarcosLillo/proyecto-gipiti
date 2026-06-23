@@ -347,7 +347,7 @@ public class IOSVP {
         try {
 
             File archivo = new File(nombreArchivo);
-
+            //System.out.println("Se guardara en: " + archivo.getAbsolutePath()); //Prueba, crea que es muy descriptivo que hace
             archivo.createNewFile();
             PrintWriter print = new PrintWriter(archivo);
             IntStream.range(0, pasajes.length).filter(i -> pasajes[i] != null).forEach(i -> print.write(pasajes[i].toString()));
